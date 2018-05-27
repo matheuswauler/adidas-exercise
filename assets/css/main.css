@@ -459,7 +459,7 @@ form input[type=submit]{
 .cart-lightbox .cart-footer{
     padding: 10px;
     display: flex;
-    align-items: stretch;
+    align-items: center;
     justify-content: center;
     border-top: 1px solid #efefef;
 }
@@ -480,4 +480,9 @@ form input[type=submit]{
 }
 .cart-lightbox .cart-footer a.purchase{
     background: #0286ce;
+}
+#cart-total{
+    margin: 0 20px;
+    font-size: 22px;
+    font-weight: 900;
 }

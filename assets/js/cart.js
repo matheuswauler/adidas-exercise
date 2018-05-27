@@ -40,15 +40,28 @@ var cart = {
         cartDisplay.show();
     },
 
+    removeFromCart: function(prodElem) {
+        prodElem.remove();
+
+        var prod_count = $('.product-cart').length;
+        if(prod_count == 0) {
+            $('.empty-cart').css('display', 'flex');
+            $('.cart-content').hide();
+        }
+
+        this.updateCartStatus();
+    },
+
     updateCartStatus: function() {
         // Atualiza contador
         var prod_count = $('.product-cart').length;
-        $('#shopping-bag').text(++prod_count);
+        $('#shopping-bag').text(prod_count);
 
         var total = 0;
         $('.product-cart').each(function(){
             var data = $(this).data('info');
             total += data.price;
         });
+        $('#cart-total').text('R$ ' + total.toFixed(2).replace('.',','));
     }
 }

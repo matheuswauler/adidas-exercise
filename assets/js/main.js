@@ -53,4 +53,8 @@ function cartController() {
     $('#product-grid').on('click', '.buy-now', function() {
         cart.addToCart($(this).data('info'));
     });
+
+    $('.cart-lightbox .shop-products').on('click', '.remove_cart', function() {
+        cart.removeFromCart($(this).parent().parent());
+    });
 }
