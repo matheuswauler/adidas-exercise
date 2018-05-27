@@ -275,13 +275,47 @@ form input[type=submit]{
 }
 
 #product-grid{
+    margin: 0 0 50px;
     display: grid;
     grid-template-columns: 22% 22% 22% 22%;
     grid-column-gap: 4%;
     grid-row-gap: 30px;
 }
-.product-box{
-    
+.product-box img{
+    width: 100%;
+    display: block;
+}
+.product-box h2{
+    margin: 10px 0 0;
+    padding-top: 10px;
+    border-top: 1px dotted #c8cbcc;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+.product-box span{
+    font-size: 12px;
+    color: #586268;
+    display: block;
+    margin-bottom: 10px;
+    letter-spacing: 0.03em;
+}
+.product-box strong{
+    font-size: 15px;
+}
+.product-box a{
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: 900;
+    letter-spacing: 0.05em;
 }
 
 .loader{
@@ -293,4 +327,157 @@ form input[type=submit]{
     background-size: 50px;
     top: 0;
     display: none;
+}
+
+.overlay{
+    position: fixed;
+    z-index: 9;
+    background: rgba(0,0,0,0.8);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.overlay.shown{
+    visibility: visible;
+    opacity: 1;
+}
+.cart-lightbox{
+    position: fixed;
+    width: 800px;
+    height: 70%;
+    top: 15%;
+    background: #fff;
+    z-index: 10;
+    left: 50%;
+    margin-left: -400px;
+    box-shadow: 0 10px 30px black;
+    transform: scale(0.8);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.cart-lightbox.shown{
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
+}
+.cart-lightbox .empty-cart{
+    width: 100;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+}
+.cart-lightbox .close-button{
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.cart-lightbox .close-button:before,
+.cart-lightbox .close-button:after{
+    content: ' ';
+    display: block;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    background: #000;
+}
+.cart-lightbox .close-button:before{
+    transform: rotate(-45deg);
+}
+.cart-lightbox .close-button:after{
+    transform: rotate(45deg);
+}
+
+.cart-lightbox .cart-content{
+    height: 100%;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+}
+.cart-lightbox h3{
+    padding: 20px;
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin: 0;
+    border-bottom: 1px solid #efefef;
+}
+.cart-lightbox .shop-products{
+    overflow: auto;
+    height: calc(100% - 163px);
+}
+.cart-lightbox .shop-products table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.cart-lightbox .shop-products .product-cart td{
+    padding: 10px 20px;
+    border-top: 1px solid #efefef;
+    vertical-align: middle;
+}
+.cart-lightbox .shop-products .product-cart:first-child td{
+    border-top: 0;
+}
+.cart-lightbox .shop-products .product-cart td:first-child,
+.cart-lightbox .shop-products .product-cart td:last-child{
+    width: 100px;
+}
+.cart-lightbox .shop-products .product-cart td:nth-child(3){
+    width: 130px;
+    font-size: 14px;
+}
+.cart-lightbox .shop-products .product-cart td:last-child{
+    font-size: 12px;
+    text-decoration: underline;
+    text-align: right;
+    cursor: pointer;
+}
+.cart-lightbox .shop-products .product-cart img{
+    width: 100%;
+    display: block;
+}
+.cart-lightbox .shop-products .product-cart h4{
+    font-size: 14px;
+    margin: 0;
+}
+.cart-lightbox .cart-footer{
+    padding: 10px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    border-top: 1px solid #efefef;
+}
+.cart-lightbox .cart-footer a{
+    display: block;
+    margin: 10px;
+    width: 30%;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    color: #fff;
+    cursor: pointer;
+}
+.cart-lightbox .cart-footer a.keep-shopping{
+    background: #000;
+}
+.cart-lightbox .cart-footer a.purchase{
+    background: #0286ce;
 }

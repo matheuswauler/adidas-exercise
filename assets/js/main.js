@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
     loadProducts();
+    cartDisplayControl();
+    cartController();
     
 });
 
@@ -20,8 +22,9 @@ function loadProducts() {
                 var prod_img = $('<img/>').attr('src', current_prod.image);
                 var prod_name = $('<h2/>').text(current_prod.name);
                 var prod_cate = $('<span/>').text(current_prod.category);
-                var prod_price = $('<strong/>').text('R$ ' + current_prod.price.toFixed(2));
-                var buy_button = $('<a/>').text('comprar').addClass('buy-now');
+                var prod_price = $('<strong/>').text('R$ ' + current_prod.price.toFixed(2).replace('.', ','));
+
+                var buy_button = $('<a/>').text('comprar').addClass('buy-now').attr('data-info', JSON.stringify(current_prod));
 
                 var prod_box = $('<div/>').addClass('product-box')
                                           .append(prod_img)
@@ -34,5 +37,20 @@ function loadProducts() {
         }
     }).done(function (){
         loading.hide();
+    });
+}
+
+function cartDisplayControl() {
+    $('#shopping-bag').on('click', function() {
+        cartDisplay.show();
+    });
+    $('.cart-lightbox .close-button, .cart-lightbox .keep-shopping').on('click', function() {
+        cartDisplay.hide();
+    });
+}
+
+function cartController() {
+    $('#product-grid').on('click', '.buy-now', function() {
+        cart.addToCart($(this).data('info'));
     });
 }
