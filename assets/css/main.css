@@ -273,3 +273,24 @@ form input[type=submit]{
     text-align: right;
     letter-spacing: 0.03em;
 }
+
+#product-grid{
+    display: grid;
+    grid-template-columns: 22% 22% 22% 22%;
+    grid-column-gap: 4%;
+    grid-row-gap: 30px;
+}
+.product-box{
+    
+}
+
+.loader{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background: url('../images/tail-spin.svg') center no-repeat rgba(255,255,255,0.9);
+    background-size: 50px;
+    top: 0;
+    display: none;
+}
